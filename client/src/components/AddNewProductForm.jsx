@@ -21,7 +21,7 @@ const AddNewProductForm = ({onAddNewProduct, setIsFormVisible}) => {
     e.preventDefault()
     const newProduct = {title, price, quantity}
     if (!valid(newProduct)) return
-    
+
     try {
       await onAddNewProduct(newProduct)
       cancelForm()
@@ -31,7 +31,7 @@ const AddNewProductForm = ({onAddNewProduct, setIsFormVisible}) => {
   }
 
   const valid = ({title, price, quantity}) => {
-    return title.length > 0 &&  price.length > 0 && quantity.length > 0
+    return title?.length > 0 &&  price?.length > 0 && quantity?.length > 0
   }
   
   return (

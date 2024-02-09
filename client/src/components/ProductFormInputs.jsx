@@ -25,7 +25,7 @@ const ProductFormInputs = ({setters, title, price, quantity}) => {
               id={`product-${input}`}
               step={input === 'price' ? '0.01' : '' } 
               name={`product-${input}`}
-              pattern={input === 'price' ? '[0-9]+' : '[a-zA-Z]+'}
+              pattern={input === 'price' ? '[0-9.]+' : '[a-zA-Z]+'}
               required
             ></input>
           </div>
