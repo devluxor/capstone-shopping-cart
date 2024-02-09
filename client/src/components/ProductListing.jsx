@@ -6,8 +6,8 @@ const ProductListing = ({products, onAddCart, setProducts}) => {
       <h2>Products</h2>
       <ul className="product-list">{
         products.map(p => <Product 
-            key={p._id} 
-            product={p} 
+            key={p.title}
+            product={p}
             onAddCart={onAddCart}
             products={products}
             setProducts={setProducts}

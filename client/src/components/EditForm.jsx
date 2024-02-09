@@ -1,10 +1,12 @@
 // import InputGroup from './InputGroup'
 import { useState } from 'react'
 
+import ProductFormInputs from './ProductFormInputs'
+
 import api from '../services/backend'
 
 const EditForm = ({product, editVisible, setEditVisible, products, setProducts}) => {
-  const [name, setName] = useState(product.title)
+  const [title, setTitle] = useState(product.title)
   const [price, setPrice] = useState(product.price)
   const [quantity, setQuantity] = useState(product.quantity)
 
@@ -12,7 +14,7 @@ const EditForm = ({product, editVisible, setEditVisible, products, setProducts})
 
   const updateProduct = async (e) => {
     e.preventDefault()
-    const newProduct = {_id: product._id, title: name, price, quantity}
+    const newProduct = {_id: product._id, title, price, quantity}
 
     try {
       await api.editProduct(newProduct)
@@ -27,42 +29,12 @@ const EditForm = ({product, editVisible, setEditVisible, products, setProducts})
       <div className="edit-form">
         <h3>Edit Product</h3>
         <form>
-          <div className="input-group">
-            <label htmlFor="product-name">Product Name:</label>
-            <input
-              value={name} 
-              onChange={e => setName(e.target.value)} 
-              type="text" 
-              id="product-name" 
-              name="product-name" 
-              required
-              ></input>
-          </div>
-          <div className="input-group">
-            <label htmlFor="product-price">Price:</label>
-            <input 
-              value={price} 
-              onChange={e => setPrice(e.target.value)} 
-              type="number" 
-              id="product-price" 
-              name="product-price" 
-              min="0" 
-              step="0.01" 
-              required
-              ></input>
-          </div>
-          <div className="input-group">
-            <label htmlFor="product-quantity">Quantity:</label>
-            <input 
-              value={quantity} 
-              onChange={e => setQuantity(e.target.value)} 
-              type="number" 
-              id="product-quantity" 
-              name="product-quantity" 
-              min="0" 
-              required
-            ></input>
-          </div>
+          <ProductFormInputs
+            setters={{title: setTitle, price: setPrice, quantity: setQuantity}}
+            title={title}
+            price={price}
+            quantity={quantity}
+          />
           <div className="actions form-actions">
             <button type="submit" onClick={e => updateProduct(e)}>Update</button>
             <button type="button" onClick={() => setEditVisible(false)}>Cancel</button>

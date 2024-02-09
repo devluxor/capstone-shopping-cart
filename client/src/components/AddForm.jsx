@@ -1,5 +1,6 @@
 import { useState } from "react"
-import api from "../services/backend"
+// import api from "../services/backend"
+import ProductFormInputs from "./ProductFormInputs"
 
 const AddForm = ({onAddNewProduct}) => {
   const [formVisible, setFormVisible] = useState(false)
@@ -20,13 +21,13 @@ const AddForm = ({onAddNewProduct}) => {
   )
 }
 
-const AddNewProductForm = ({setFormVisible}) => {
-  const [name, setName] = useState('')
+const AddNewProductForm = ({onAddNewProduct, setFormVisible}) => {
+  const [title, setTitle] = useState('')
   const [price, setPrice] = useState('')
   const [quantity, setQuantity] = useState('')
 
   const resetForm = () => {
-    setName('')
+    setTitle('')
     setPrice('')
     setQuantity('')
   }
@@ -38,54 +39,24 @@ const AddNewProductForm = ({setFormVisible}) => {
   
   const addNew = async (e) => {
     e.preventDefault()
-    const newProduct = {title: name, price, quantity}
+    const newProduct = {title, price, quantity}
 
     try {
-      await api.addNewProduct(newProduct)
-      resetForm()
+      await onAddNewProduct(newProduct)
+      cancelForm()
     } catch(e) {
       console.error(e)
     }
   }
-
+  
   return (
     <form>
-      <div className="input-group">
-        <label htmlFor="product-name">Product Name:</label>
-        <input
-          value={name} 
-          onChange={e => setName(e.target.value)} 
-          type="text" 
-          id="product-name" 
-          name="product-name" 
-          required
-          ></input>
-      </div>
-      <div className="input-group">
-        <label htmlFor="product-price">Price:</label>
-        <input 
-          value={price} 
-          onChange={e => setPrice(e.target.value)} 
-          type="number" 
-          id="product-price" 
-          name="product-price" 
-          min="0" 
-          step="0.01" 
-          required
-          ></input>
-      </div>
-      <div className="input-group">
-        <label htmlFor="product-quantity">Quantity:</label>
-        <input 
-          value={quantity} 
-          onChange={e => setQuantity(e.target.value)} 
-          type="number" 
-          id="product-quantity" 
-          name="product-quantity" 
-          min="0" 
-          required
-        ></input>
-      </div>
+      <ProductFormInputs
+        setters={{title: setTitle, price: setPrice, quantity: setQuantity}}
+        title={title} 
+        price={price} 
+        quantity={quantity}
+      />
       <div className="actions form-actions">
         <button type="submit" onClick={e => addNew(e)}>Add</button>
         <button type="button" onClick={e => cancelForm(e)}>Cancel</button>

@@ -1,20 +1,21 @@
 @import url("./whitespace-reset.css");
 @import url("https://fonts.googleapis.com/css?family=Rammetto+One%7CRoboto+Condensed");
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&family=Raleway:wght@200;300;400;500;700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;1,100;1,300&display=swap');
 
 :root {
   --primary:rgb(27, 33, 54);
   --secondary:rgb(46, 56, 92);
-  --accent:rgb(31, 194, 66);
+  --accent:rgb(19, 156, 49);
   --dark-red:#a83850;
   --delete-red:#7c2538;
   --font:rgb(202, 202, 173);
   --button-disabled:rgb(21, 25, 39);
   --font-disabled:rgb(64, 69, 87);
-  background-color: rgb(32, 31, 31);
 }
 
 body {
   font-family: "Roboto Condensed", sans-serif;
+  background-color: rgb(32, 31, 31);
   font-size: 16px;
   color: var(--font);
 }
@@ -38,7 +39,7 @@ header {
 }
 
 header h1 {
-  /* font-family: "Rammetto One", cursive; */
+  font-family: "Raleway", cursive;
   font-size: 26px;
   float: left;
 }
@@ -46,6 +47,10 @@ header h1 {
 header .cart {
   float: right;
   overflow: hidden;
+}
+
+.cart {
+  padding: 10px;
 }
 
 main {
@@ -124,11 +129,12 @@ button {
 }
 
 .checkout {
-  /* background: var(--secondary); */
   background-color: var(--accent);
   color: var(--primary);
+  color: white;
   margin-top: 20px;
   float: right;
+  border: 1px solid var(--secondary);
 }
 
 button {
