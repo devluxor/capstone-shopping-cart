@@ -48,3 +48,12 @@ test('quantity input changes', async () => {
   await user.type(inputQuantity, testNumber)
   expect(inputQuantity).toHaveValue(Number(testNumber))
 })
+
+test('quantity input does not accept non-digit characters', async () => {
+  const testString = '!@#$'
+  const user = userEvent.setup()
+  render(<AddNewProductForm/>)
+  const inputQuantity = screen.getByRole('spinbutton', {name: 'Product Quantity:' })
+  await user.type(inputQuantity, testString)
+  expect(inputQuantity).toHaveValue(null)
+})
