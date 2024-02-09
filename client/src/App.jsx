@@ -30,18 +30,31 @@ const App = () => {
     } else {
       newCart.push({...product, quantity: 1})
     }
-    setCart(newCart)
-    await api.addProductToCart(product)
+
+    try {
+      setCart(newCart)
+      await api.addProductToCart(product)
+    } catch(e) {
+      console.error(e)
+    }
   }
 
   const handleCheckout = async () => {
-    setCart([])
-    await api.checkout()
+    try {
+      setCart([])
+      await api.checkout()
+    } catch(e) {
+      console.error(e)
+    }
   }
 
   const handleAddNewProduct = async (product) => {
-    const newProduct = await api.addNewProduct(product)
-    setProducts(products.concat(newProduct))
+    try {
+      const newProduct = await api.addNewProduct(product)
+      setProducts(products.concat(newProduct))
+    } catch (e) {
+      console.error(e)
+    }
   }
 
   return (
