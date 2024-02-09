@@ -1,5 +1,6 @@
 import CheckoutButton from './CheckoutButton'
 import CartItems from './CartItems'
+
 const Cart = ({cart, onCheckout}) => {
   return (
     <div className='cart'>
