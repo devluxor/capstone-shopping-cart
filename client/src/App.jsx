@@ -40,8 +40,8 @@ const App = () => {
   }
 
   const handleAddNewProduct = async (product) => {
-    setProducts(products.concat(product))
-    await api.addNewProduct(product)
+    const newProduct = await api.addNewProduct(product)
+    setProducts(products.concat(newProduct))
   }
 
   return (

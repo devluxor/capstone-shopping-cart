@@ -124,8 +124,20 @@ button {
   font-weight: bold;
 }
 
-.actions > button {
+button {
   margin-right: 5px;
+}
+
+button:hover {
+  background-color: var(--primary);
+  color: var(--font);
+  border-color: transparent;
+}
+
+button:active {
+  background-color: var(--primary);
+  color: var(--accent);
+  border-color: transparent;
 }
 
 .checkout {
@@ -135,6 +147,17 @@ button {
   margin-top: 20px;
   float: right;
   border: 1px solid var(--secondary);
+}
+
+.checkout:hover {
+  background-color: var(--primary);
+  border-color: var(--accent);
+}
+
+.checkout:active {
+  background-color: var(--primary);
+  border-color: var(--accent);
+  color: var(--accent);
 }
 
 button {

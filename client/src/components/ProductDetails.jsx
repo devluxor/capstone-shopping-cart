@@ -2,6 +2,7 @@ import api from '../services/backend'
 import ProductActions from './ProductActions'
 
 const ProductDetails = ({product, onAddCart, products, setProducts, setEditVisible}) => {
+
   const deleteProduct = async (product) => {
     setProducts(products.filter(p => p === product ? null : p))
     await api.deleteProduct(product)

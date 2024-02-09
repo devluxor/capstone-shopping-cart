@@ -10,11 +10,11 @@ const ProductFormInputs = ({setters, title, price, quantity}) => {
 
   return (
     <>
-      {Object.keys(setters).map((input, i) => {
+      {Object.keys(setters).map((input) => {
         const setter = setters[input]
         const value = getVariable(input)
         return (
-          <div className="input-group" key={i}>
+          <div className="input-group" key={input}>
             <label htmlFor={`product-${input}`}
               >Product {`${input[0].toUpperCase()}${input.slice(1)}`}:
             </label>
