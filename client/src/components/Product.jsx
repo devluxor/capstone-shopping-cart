@@ -5,7 +5,7 @@ import EditForm from './EditForm'
 
 
 const Product = ({product, onAddCart, products, setProducts}) => {
-  const [editVisible, setEditVisible] = useState(false)
+  const [isEditVisible, setIsEditVisible] = useState(false)
 
   return (
     <li className='product'>
@@ -14,15 +14,17 @@ const Product = ({product, onAddCart, products, setProducts}) => {
         onAddCart={onAddCart} 
         products={products} 
         setProducts={setProducts} 
-        setEditVisible={setEditVisible}
+        setEditVisible={setIsEditVisible}
       />
-      <EditForm 
-        product={product} 
-        editVisible={editVisible} 
-        setEditVisible={setEditVisible}
-        products={products}
-        setProducts={setProducts}
-      />
+      {isEditVisible &&
+        <EditForm 
+          product={product} 
+          editVisible={isEditVisible} 
+          setEditVisible={setIsEditVisible}
+          products={products}
+          setProducts={setProducts}
+        />
+      }
     </li>
   )
 }
