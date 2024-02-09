@@ -1,22 +1,21 @@
 import { useState } from "react"
-// import api from "../services/backend"
 import ProductFormInputs from "./ProductFormInputs"
 
 const AddForm = ({onAddNewProduct}) => {
-  const [formVisible, setFormVisible] = useState(false)
+  const [isFormVisible, setIsFormVisible] = useState(false)
 
   return (
-    <div className={`add-form${formVisible ? ' visible' : ''}`}>
+    <div className={`add-form${isFormVisible ? ' visible' : ''}`}>
       <p>
         <button 
           className='add-product-button'
-          onClick={() => setFormVisible(true)}
+          onClick={() => setIsFormVisible(true)}
           >
           Add A Product
         </button>
       </p>
       <h3>Add Product</h3>
-      <AddNewProductForm onAddNewProduct={onAddNewProduct} setFormVisible={setFormVisible}/>
+      <AddNewProductForm onAddNewProduct={onAddNewProduct} setIsFormVisible={setIsFormVisible}/>
     </div>
   )
 }

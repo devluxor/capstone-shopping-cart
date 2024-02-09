@@ -14,12 +14,12 @@ const EditForm = ({product, editVisible, setEditVisible, products, setProducts})
 
   const updateProduct = async (e) => {
     e.preventDefault()
-    const newProduct = {_id: product._id, title, price, quantity}
-
+    
     try {
-      await api.editProduct(newProduct)
       setProducts(products.map(p => p._id === newProduct._id ? {...p, ...newProduct} : p))
+      const newProduct = {_id: product._id, title, price, quantity}
       setEditVisible(false)
+      await api.editProduct(newProduct)
     } catch(e) {
       console.error(e)
     }
