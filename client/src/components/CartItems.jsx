@@ -1,4 +1,6 @@
 const CartItems = ({cart}) => {
+
+
   return (
     <table className='cart-items'>
 
@@ -26,7 +28,7 @@ const CartItems = ({cart}) => {
       <tfoot>
         <tr>
           <td colSpan="3" className="total">
-            {`Total: $${cart.reduce((v, {price}) => v + price, 0)}`}
+            {`Total: $${cart.reduce((v, {price, quantity}) => v + (price * quantity), 0)}`}
           </td>
         </tr>
       </tfoot>
