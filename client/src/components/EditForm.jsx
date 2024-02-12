@@ -16,8 +16,8 @@ const EditForm = ({product, editVisible, setEditVisible, products, setProducts})
     e.preventDefault()
     
     try {
-      setProducts(products.map(p => p._id === newProduct._id ? {...p, ...newProduct} : p))
       const newProduct = {_id: product._id, title, price, quantity}
+      setProducts(products.map(p => p._id === newProduct._id ? {...p, ...newProduct} : p))
       setEditVisible(false)
       await api.editProduct(newProduct)
     } catch(e) {
